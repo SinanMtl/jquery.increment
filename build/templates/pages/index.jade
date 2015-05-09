@@ -1,0 +1,33 @@
+extends ../layout/page.jade
+
+block content
+	.container
+		h1 jQuery Increment
+		p 
+			| Bu eklenti ile kolay bir şekilde increment input hazırlayabilirsiniz.
+			| Öncelikle aşağıdaki gibi bir input hazırlıyoruz
+		p HTML : 
+		p 
+			code &lt;input type=&quot;text&quot; value=&quot;12&quot; data-min=&quot;00&quot; data-max=&quot;23&quot;&gt;
+		
+		p Javascript :
+
+		p
+			code $(&quot;.increment-input&quot;).increment();
+
+		h4 Sonuç
+		p
+			input.increment.increment-input.form-control(type="text", value="12", data-min="0", data-max="23")
+		p
+			| Input'a çift basamaklı yazdırmak için
+			code {double : true}
+			| şeklinde ayarlamak yeterli olur.
+
+	script(type="text/javascript").
+		//var inc = new increment(".increment-input");
+		//var inc = new InputIncrement( ".increment-input" );
+		$(".increment-input").increment();
+		$(".increment-double").increment({
+			double : true
+		});
+		

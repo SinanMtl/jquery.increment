@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>jQuery Increment</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.increment.css">
+    <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="application/javascript" src="../jquery.increment.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>jQuery Increment</h1>
+      <p>
+         
+        Bu eklenti ile kolay bir şekilde increment input hazırlayabilirsiniz.
+        Öncelikle aşağıdaki gibi bir input hazırlıyoruz
+      </p>
+      <p>HTML : </p>
+      <p> <code>&lt;input type=&quot;text&quot; value=&quot;12&quot; data-min=&quot;00&quot; data-max=&quot;23&quot;&gt;</code></p>
+      <p>Javascript :</p>
+      <p><code>$(&quot;.increment-input&quot;).increment();</code></p>
+      <h4>Sonuç</h4>
+      <p>
+        <input type="text" value="12" data-min="0" data-max="23" class="increment increment-input form-control">
+      </p>
+      <p>Input'a çift basamaklı yazdırmak için<code>{double : true}</code>şeklinde ayarlamak yeterli olur.</p>
+    </div>
+    <script type="text/javascript">
+      //var inc = new increment(".increment-input");
+      //var inc = new InputIncrement( ".increment-input" );
+      $(".increment-input").increment();
+      $(".increment-double").increment({
+      	double : true
+      });
+    </script>
+  </body>
+</html>

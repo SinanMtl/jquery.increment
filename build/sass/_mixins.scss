@@ -1,0 +1,75 @@
+
+
+
+@mixin ul_reset{
+	margin:0;padding: 0;list-style:none;
+}
+
+@mixin opacity($val){
+	opacity: $val; filter: alpha(opacity=($val*100));
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+@mixin ul_reset{margin:0;padding:0;list-style: none;}
+@mixin background-opacity($color, $opacity) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+    .ie8 &, .ie7 & {
+    	$iecolor : ie-hex-str(rgba($color, $opacity)); 
+	    background: transparent;
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$iecolor},endColorstr=#{$iecolor}); 
+	    zoom: 1;
+	}
+}
+
+
+/// Responsive manager.
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $breakpoints: (
+    'xxsmall' : 320px,
+    'xsmall' : 480px,
+    'small': 767px,
+    'medium': 992px,
+    'large': 1200px
+    );
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
+
+    @media (max-width: #{$query}) {
+      @content;
+    }
+  } @else {
+    @warn 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin triangle($direction: "bottom"){
+  
+  @if $direction == "top" {
+    border-top: 0;border-right: 4px solid transparent;border-left: 4px solid transparent;border-bottom: 4px dashed;
+    .ie8 &{width: 0;height: 0;border-style: solid;border-width: 0 4px 4px 4px;border-color: transparent transparent #000 transparent;}
+  }@else if $direction == "right" {
+    border-top: 4px dashed transparent;border-right: 0 dashed;border-left: 4px dashed;border-bottom: 4px dashed transparent;
+    .ie8 &{width: 0;height: 0;border-style: solid;border-width: 4px 0 4px 4px;border-color: transparent transparent transparent #000;}
+  }@else if $direction == "left" {
+    border-top: 4px dashed transparent;border-right: 4px dashed;border-left: 0 transparent;border-bottom: 4px dashed transparent;
+    .ie8 &{width: 0;height: 0;border-style: solid;border-width: 4px 4px 4px 0;border-color: transparent #000 transparent transparent;}
+  } @else{
+    border-top: 4px dashed;border-right: 4px solid transparent;border-left: 4px solid transparent;border-bottom: 0;
+    .ie8 &{width: 0;height: 0;border-style: solid;border-width: 4px 4px 0 4px;border-color: #000 transparent transparent transparent;}
+  }
+
+}
