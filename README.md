@@ -5,7 +5,7 @@ Bu eklenti ile kolay bir şekilde increment input hazırlayabilirsiniz.
 Öncelikle script dosyamızı HTML dosyamıza eklememiz gerek
 
 ```
-<script type="text/javascript" src="jquery.inputstilci.js"></script>
+<script type="text/javascript" src="jquery.increment.min.js"></script>
 ```
 
 Daha sonra aşağıdaki gibi bir input hazırlıyoruz:
